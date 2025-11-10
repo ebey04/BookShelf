@@ -1,4 +1,4 @@
-const booksArray = [];
+let booksArray = [];
 
 function Book(title, author, pages, genre, status) {
     this.title = title;
@@ -70,8 +70,11 @@ function libraryShow() {
     bookCard.append(title, author, pages, genre, status, toggleBtn, removeBtn);
     libraryContainer.appendChild(bookCard);
     }
+    
+    saveLibrary();
 }
 
+loadLibrary();
 
 libraryShow();
 
@@ -102,3 +105,16 @@ form.addEventListener("submit", (event) => {
     form.reset();
     form.classList.remove("show");
 });
+
+function saveLibrary() {
+    localStorage.setItem("myLibrary", JSON.stringify(booksArray));
+}
+
+function loadLibrary() {
+    const storedLibrary = localStorage.getItem("myLibrary");
+    if (storedLibrary) {
+        booksArray = JSON.parse(storedLibrary).map(
+        b => new Book(b.title, b.author, b.pages, b.genre, b.status)
+        );
+    }
+}
