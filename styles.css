@@ -7,6 +7,8 @@
 :root{
     --text-color: #c2ad90;
     --button-color: #97754d;
+    --secondary-color: #e4dbce;
+    --secondary-text: #0c100e;
 }
 
 body{
@@ -22,7 +24,13 @@ header{
 }
 
 #library{
-
+    color: var(--secondary-text);
+    border: 2px solid var(--secondary-text);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem;
+    width: 30%;
+    background-color: var(--secondary-color) ;
 }
 
 .btn{
@@ -36,8 +44,8 @@ header{
 }
 
 form{
-    background-color: #e4dbce;
-    color: #0c100e;
+    background-color: var(--secondary-color);
+    color: var(--secondary-text);
     border-radius: 8px;
     padding: 1rem;
     margin: 1rem auto;

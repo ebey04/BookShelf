@@ -1,6 +1,12 @@
-const library = document.getElementById("library");
-
-const booksArray = [];
+const booksArray = [
+    {
+    title: "Pride & Prejudice",
+    author: "Jane Austen",
+    pages: 430,
+    genre: "Fiction",
+    status: "Read",
+    }
+];
 
 function Book(title, author, pages, genre, status) {
     this.title = title;
@@ -9,9 +15,44 @@ function Book(title, author, pages, genre, status) {
     this.genre = genre;
     this.status = status;
     this.id = crypto.randomUUID();
-}
+    }
 
 function addBookToLibrary(title, author, pages, genre, status) {
     const newBook = new Book(title, author, pages, genre, status);
     booksArray.push(newBook);
 }
+
+function libraryShow() {
+    const libraryContainer = document.getElementById("library");
+  libraryContainer.innerHTML = ""; // clear existing content
+
+    for (let book of booksArray) {
+    const title = document.createElement("h3");
+    title.textContent = book.title;
+
+    const author = document.createElement("p");
+    author.innerHTML = `<span class="bold">Author:</span> ${book.author}`;
+
+    const pages = document.createElement("p");
+    pages.innerHTML = `<span class="bold">Page Count:</span> ${book.pages}`;
+
+    const genre = document.createElement("p");
+    genre.innerHTML = `<span class="bold">Genre:</span> ${book.genre}`;
+
+    const status = document.createElement("p");
+    status.innerHTML = `<span class="bold">Status:</span> ${book.status}`;
+
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book-card");
+
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+    bookCard.appendChild(genre);
+    bookCard.appendChild(status);
+
+    library.appendChild(bookCard);
+    }
+}
+
+libraryShow();
