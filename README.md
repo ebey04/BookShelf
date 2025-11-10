@@ -2,7 +2,7 @@
 
 _A cozy little web app for book lovers who love to stay organized._
 
-🔗 Live Demo:()
+🔗 Live Demo:(https://ebey04.github.io/BookShelf/)
 
 ---
 
