@@ -1,12 +1,4 @@
-const booksArray = [
-    {
-    title: "Pride & Prejudice",
-    author: "Jane Austen",
-    pages: 430,
-    genre: "Fiction",
-    status: "Read",
-    }
-];
+const booksArray = [];
 
 function Book(title, author, pages, genre, status) {
     this.title = title;
@@ -23,10 +15,10 @@ function addBookToLibrary(title, author, pages, genre, status) {
 }
 
 function libraryShow() {
-  const libraryContainer = document.getElementById("library");
-  libraryContainer.innerHTML = ""; // clear existing content
+    const libraryContainer = document.getElementById("library");
+    libraryContainer.innerHTML = "";
 
-  for (let book of booksArray) {
+    for (let book of booksArray) {
     const title = document.createElement("h3");
     title.textContent = book.title;
 
@@ -39,27 +31,43 @@ function libraryShow() {
     const genre = document.createElement("p");
     genre.innerHTML = `<span class="bold">Genre:</span> ${book.genre}`;
 
+
     const status = document.createElement("p");
-    status.innerHTML = `<span class="bold">Status:</span> ${book.status}`;
+    const readableStatus = book.status === "read" ? "Read" : "To Be Read";
+    status.innerHTML = `<span class="bold">Status:</span> ${readableStatus}`;
 
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
-    bookCard.dataset.id = book.id; 
+    bookCard.dataset.id = book.id;
 
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "Remove";
-    removeBtn.addEventListener("click", (event) => {
-        const idToRemove = event.target.parentElement.dataset.id;
-        console.log("Removing book with ID:", idToRemove);
+    
+    const toggleBtn = document.createElement("button");
+    toggleBtn.textContent = "Toggle Status";
+    toggleBtn.classList.add("btn");
+    toggleBtn.addEventListener("click", (event) => {
+        const idToToggle = event.target.parentElement.dataset.id;
+        const book = booksArray.find((b) => b.id === idToToggle);
+        if (book) {
+            book.status = book.status === "read" ? "tbr" : "read";
+            libraryShow(); 
+        }
     });
 
-    bookCard.appendChild(title);
-    bookCard.appendChild(author);
-    bookCard.appendChild(pages);
-    bookCard.appendChild(genre);
-    bookCard.appendChild(status);
-    bookCard.appendChild(removeBtn);
+    
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.classList.add("btn")
+    removeBtn.addEventListener("click", (event) => {
+        const idToRemove = event.target.parentElement.dataset.id;
+        const index = booksArray.findIndex((b) => b.id === idToRemove);
+        if (index !== -1) {
+            booksArray.splice(index, 1);
+            libraryShow();
+        }
+    });
 
+    
+    bookCard.append(title, author, pages, genre, status, toggleBtn, removeBtn);
     libraryContainer.appendChild(bookCard);
     }
 }
