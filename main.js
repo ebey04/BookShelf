@@ -23,10 +23,10 @@ function addBookToLibrary(title, author, pages, genre, status) {
 }
 
 function libraryShow() {
-    const libraryContainer = document.getElementById("library");
+  const libraryContainer = document.getElementById("library");
   libraryContainer.innerHTML = ""; // clear existing content
 
-    for (let book of booksArray) {
+  for (let book of booksArray) {
     const title = document.createElement("h3");
     title.textContent = book.title;
 
@@ -44,16 +44,26 @@ function libraryShow() {
 
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
+    bookCard.dataset.id = book.id; 
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.addEventListener("click", (event) => {
+        const idToRemove = event.target.parentElement.dataset.id;
+        console.log("Removing book with ID:", idToRemove);
+    });
 
     bookCard.appendChild(title);
     bookCard.appendChild(author);
     bookCard.appendChild(pages);
     bookCard.appendChild(genre);
     bookCard.appendChild(status);
+    bookCard.appendChild(removeBtn);
 
-    library.appendChild(bookCard);
+    libraryContainer.appendChild(bookCard);
     }
 }
+
 
 libraryShow();
 
