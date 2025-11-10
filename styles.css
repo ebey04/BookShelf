@@ -54,6 +54,13 @@ header{
     background-color: var(--button-color);
     box-shadow: 1px 3px 5px #654e34;
     margin: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn:hover, .btn:focus{
+    transform: translateY(-5px) translateX(-5px);
+    background-color: #48182f;
+    color: var(--text-color)
 }
 
 form{
