@@ -60,6 +60,7 @@ libraryShow();
 const bookBTN = document.getElementById("bookBTN");
 const form = document.getElementById("form");
 
+
 bookBTN.addEventListener("click", () => {
     form.classList.contains("show")
     ? form.classList.remove("show")
@@ -74,7 +75,7 @@ form.addEventListener("submit", (event) => {
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const genre = document.getElementById("genre").value;
-    const status = document.getElementById("status").value;
+    const status = document.querySelector('input[name="status"]:checked')?.value || "unknown";
 
     addBookToLibrary(title, author, pages, genre, status);
 
