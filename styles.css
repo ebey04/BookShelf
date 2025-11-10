@@ -6,7 +6,7 @@
 
 :root{
     --text-color: #c2ad90;
-    --button-color: #97754d;
+    --button-color: #AF8C64;
     --secondary-color: #e4dbce;
     --secondary-text: #0c100e;
 }
@@ -23,6 +23,7 @@ header{
     font-size: 1.5rem;
     font-family: "Libre Baskerville";
     margin-bottom: 1.5rem;
+    text-shadow: 1px 3px 4px var(--secondary-text);
 }
 
 #library h3{
@@ -59,7 +60,7 @@ header{
     transition: transform 0.3s ease-in-out;
 }
 
-.btn:hover, .btn:focus{
+.btn:hover, .btn:focus-visible{
     transform: translateY(-5px) translateX(-5px);
     background-color: #48182f;
     color: var(--text-color)
@@ -71,7 +72,7 @@ form{
     border-radius: 8px;
     padding: 1rem;
     margin: 1rem auto;
-    width: 70%;
+    width: 50%;
     height: auto;
     display: none;
     font-size: 1.25rem;;
@@ -93,12 +94,29 @@ fieldset legend{
     font-family: "Libre Baskerville";
 }
 
+fieldset fieldset {
+    align-self: flex-start;
+    width: auto;
+    margin-left: 0;
+    margin-right: auto;
+}
+
 fieldset #mini{
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: .5rem;
 }
 
 input[type="text"], input[type="number"]{
     max-width: 50%;
+}
+
+input:focus {
+    outline: 2px solid var(--button-color);
+    background-color: #fffaf3;
+}
+
+input[type="submit"]{
+    width: 30%;
+    align-items: center;
 }
