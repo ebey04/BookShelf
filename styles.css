@@ -20,8 +20,9 @@ header{
     text-decoration: underline;
     text-underline-offset: .5rem;
     color: var(--text-color);
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-family: "Libre Baskerville";
+    margin-bottom: 1.5rem;
 }
 
 #library h3{
