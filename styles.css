@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --text-color: #c2ad90;
+    --button-color: #97754d;
+}
+
+body{
+    background-color: #364442;
+}
+
+header{
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: .5rem;
+    color: var(--text-color);
+    font-size: 1.75rem;
+}
+
+#books{
+
+}
+
+.btn{
+    border-radius: 8px;
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    background-color: var(--button-color);
+    box-shadow: 1px 3px 5px #654e34;
+    margin: 1.5rem;
+}
+
+form{
+    background-color: #e4dbce;
+    color: #0c100e;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: 70%;
+    height: auto;
+}
+
+fieldset{
+    margin: 1rem auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset legend{
+    font-size: 1.5rem;
+}
+
+fieldset #mini{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+input[type="text"], input[type="number"]{
+    max-width: 50%;
+}
