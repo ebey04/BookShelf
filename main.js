@@ -80,6 +80,6 @@ form.addEventListener("submit", (event) => {
 
     libraryShow();
 
-    newBookForm.reset();
-    newBookForm.classList.remove("show");
+    form.reset();
+    form.classList.remove("show");
 });
