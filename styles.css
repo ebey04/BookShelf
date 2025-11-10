@@ -23,7 +23,16 @@ header{
     font-size: 1.75rem;
 }
 
+#library h3{
+    font-size: 1.25rem;
+    padding: .5rem;
+}
+
 #library{
+    display: flex;
+}
+
+.book-card{
     color: var(--secondary-text);
     border: 2px solid var(--secondary-text);
     border-radius: 8px;
@@ -31,11 +40,6 @@ header{
     margin: 1rem;
     width: 30%;
     background-color: var(--secondary-color);
-}
-
-#library h3{
-    font-size: 1.25rem;
-    padding: .5rem;
 }
 
 .bold{
