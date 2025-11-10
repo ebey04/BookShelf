@@ -30,7 +30,16 @@ header{
     padding: 1rem;
     margin: 1rem;
     width: 30%;
-    background-color: var(--secondary-color) ;
+    background-color: var(--secondary-color);
+}
+
+#library h3{
+    font-size: 1.25rem;
+    padding: .5rem;
+}
+
+.bold{
+    font-weight: 600;;
 }
 
 .btn{
