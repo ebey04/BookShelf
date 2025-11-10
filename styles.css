@@ -60,6 +60,11 @@ form{
     margin: 1rem auto;
     width: 70%;
     height: auto;
+    display: none;
+}
+
+.show{
+    display: block;
 }
 
 fieldset{

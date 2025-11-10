@@ -56,3 +56,14 @@ function libraryShow() {
 }
 
 libraryShow();
+
+const bookBTN = document.getElementById("bookBTN");
+const form = document.getElementById("form");
+
+bookBTN.addEventListener("click", () => {
+    form.classList.contains("show")
+    ? form.classList.remove("show")
+    : form.classList.add("show");
+    
+})
+
