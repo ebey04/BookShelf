@@ -80,49 +80,74 @@ libraryShow();
 
 const bookBTN = document.getElementById("bookBTN");
 const form = document.getElementById("form");
+const errorMsg = document.getElementById("error");
 
 
 bookBTN.addEventListener("click", () => {
     form.classList.contains("show")
     ? form.classList.remove("show")
     : form.classList.add("show");
-    
+
+    errorMsg.innerText = "";   // clear old errors
+    errorMsg.classList.remove("show"); // hide error box
 })
 
 form.addEventListener("submit", (event) => {
     event.preventDefault(); 
 
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const pages = document.getElementById("pages").value;
-    const genre = document.getElementById("genre").value;
-    const status = document.querySelector('input[name="status"]:checked')?.value || "unknown";
-    const errorMsg = document.getElementById('error');
+    const titleInput = document.getElementById("title");
+    const authorInput = document.getElementById("author");
+    const pages = document.getElementById("pages");
+    const genre = document.getElementById("genre");
+    const status = document.querySelector('input[name="status"]:checked');
+
+    // Always clear old custom validity
+    titleInput.setCustomValidity("");
+    authorInput.setCustomValidity("");
 
     let messages = [];
 
-    if (title.validity.valueMissing) {
+    // --- TITLE ---
+    if (titleInput.validity.valueMissing) {
         messages.push("Title is required.");
+        titleInput.setCustomValidity(" ");
     }
 
-    if (author.validity.valueMissing) {
+    // --- AUTHOR ---
+    if (authorInput.validity.valueMissing) {
         messages.push("Author is required.");
+        authorInput.setCustomValidity(" ");
     }
+
+    // --- STATUS RADIO GROUP ---
     if (!status) {
         messages.push("Please select a reading status.");
     }
 
+    // --- SHOW ERRORS ---
     if (messages.length > 0) {
         errorMsg.innerText = messages.join(" ");
+        errorMsg.classList.add("show");  
         return;
+    }
 
-    addBookToLibrary(title, author, pages, genre, status);
+    errorMsg.classList.remove("show");
+    errorMsg.innerText = "";
+
+    // --- FORM IS VALID: ADD BOOK ---
+    addBookToLibrary(
+        titleInput.value,
+        authorInput.value,
+        pages.value,
+        genre.value,
+        status.value
+    );
 
     libraryShow();
-
     form.reset();
     form.classList.remove("show");
 });
+
 
 function saveLibrary() {
     localStorage.setItem("myLibrary", JSON.stringify(booksArray));
