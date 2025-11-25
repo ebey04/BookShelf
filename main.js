@@ -97,6 +97,24 @@ form.addEventListener("submit", (event) => {
     const pages = document.getElementById("pages").value;
     const genre = document.getElementById("genre").value;
     const status = document.querySelector('input[name="status"]:checked')?.value || "unknown";
+    const errorMsg = document.getElementById('error');
+
+    let messages = [];
+
+    if (title.validity.valueMissing) {
+        messages.push("Title is required.");
+    }
+
+    if (author.validity.valueMissing) {
+        messages.push("Author is required.");
+    }
+    if (!status) {
+        messages.push("Please select a reading status.");
+    }
+
+    if (messages.length > 0) {
+        errorMsg.innerText = messages.join(" ");
+        return;
 
     addBookToLibrary(title, author, pages, genre, status);
 
