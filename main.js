@@ -88,8 +88,8 @@ bookBTN.addEventListener("click", () => {
     ? form.classList.remove("show")
     : form.classList.add("show");
 
-    errorMsg.innerText = "";   // clear old errors
-    errorMsg.classList.remove("show"); // hide error box
+    errorMsg.innerText = "";  
+    errorMsg.classList.remove("show"); 
 })
 
 form.addEventListener("submit", (event) => {
@@ -101,30 +101,25 @@ form.addEventListener("submit", (event) => {
     const genre = document.getElementById("genre");
     const status = document.querySelector('input[name="status"]:checked');
 
-    // Always clear old custom validity
     titleInput.setCustomValidity("");
     authorInput.setCustomValidity("");
 
     let messages = [];
 
-    // --- TITLE ---
     if (titleInput.validity.valueMissing) {
         messages.push("Title is required.");
         titleInput.setCustomValidity(" ");
     }
 
-    // --- AUTHOR ---
     if (authorInput.validity.valueMissing) {
         messages.push("Author is required.");
         authorInput.setCustomValidity(" ");
     }
 
-    // --- STATUS RADIO GROUP ---
     if (!status) {
         messages.push("Please select a reading status.");
     }
 
-    // --- SHOW ERRORS ---
     if (messages.length > 0) {
         errorMsg.innerText = messages.join(" ");
         errorMsg.classList.add("show");  
@@ -134,7 +129,6 @@ form.addEventListener("submit", (event) => {
     errorMsg.classList.remove("show");
     errorMsg.innerText = "";
 
-    // --- FORM IS VALID: ADD BOOK ---
     addBookToLibrary(
         titleInput.value,
         authorInput.value,
